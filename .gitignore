@@ -1,0 +1,8 @@
+# JetBrains metadata
+.idea/
+
+# Apple metadata
+*.DS_Store
+
+# Assignment files
+project_brief.pdf
