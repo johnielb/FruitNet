@@ -3,7 +3,7 @@
 # 300490028
 
 ###
-# Step 0: Load data
+# Load data
 ###
 
 import os
@@ -33,5 +33,14 @@ print(X_train.size())
 print(len(y_train))
 
 ###
-# Step 1: Conduct exploratory data analysis
+# Preprocessing
 ###
+
+X_train_proc = torch.zeros((len(train_list), 6, 300, 300))
+red = X_train[:, 0, :, :]
+green = X_train[:, 1, :, :]
+blue = X_train[:, 2, :, :]
+X_train_proc[:, 0:3, :, :] = X_train
+X_train_proc[:, 3, :, :] = (red - green) / 2 + 0.5
+X_train_proc[:, 4, :, :] = (red - blue) / 2 + 0.5
+X_train_proc[:, 5, :, :] = (green - blue) / 2 + 0.5
