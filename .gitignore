@@ -9,3 +9,8 @@ project_brief.pdf
 reportfigures
 report.pages
 log.pages
+
+# Extra images
+traindata/cherry/pixabay*
+traindata/strawberry/pixabay*
+traindata/tomato/pixabay*
