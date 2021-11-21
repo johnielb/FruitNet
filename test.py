@@ -20,7 +20,10 @@ if __name__ == "__main__":
             for filename in sorted(os.listdir(subdir)):
                 if filename == ".DS_Store": continue
                 filepath = os.path.join(subdir, filename)
-                image = imread(filepath)[:, :, :3]/255.0
+                image = imread(filepath)
+                if image.ndim == 2:
+                    image = np.stack((image,)*3, axis=-1)
+                image = image[:, :, :3]/255.0
                 if image.shape[0] != image.shape[1]:
                     image = tf.image.central_crop(image, central_fraction=1)
                 image = tf.image.resize(image, [100, 100]).numpy()
